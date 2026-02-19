@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIP Access</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: monospace;
+  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+input {
+  padding: 12px;
+  margin-top: 20px;
+  background: #111;
+  border: 1px solid #333;
+  color: white;
+  text-align: center;
+  width: 200px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: gold;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  height: 20px;
+}
+
+#secret {
+  display: none;
+  font-size: 30px;
+  font-weight: bold;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px gold; }
+  to { text-shadow: 0 0 30px orange; }
+}
+
+.glitch {
+  animation: shake 0.2s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(-5px); }
+  25% { transform: translateX(5px); }
+  50% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>🔒 VIP ACCESS REQUIRED</h2>
+  <p>Masukkan kode rahasia untuk membuka pesan.</p>
+
+  <input type="password" id="password" placeholder="Kode rahasia">
+  <button onclick="checkPassword()">Unlock</button>
+
+  <div class="error" id="error"></div>
+
+  <h1 id="secret">
+    -S E L A M A T
+    ✨Ulang Tahun✨
+      from: bro mu
+   </h1>
+</div>
+
+<script>
+function checkPassword() {
+  const correct = "20-2-09"; // GANTI dengan tanggal lahir dia
+  const input = document.getElementById("password").value;
+  const errorText = document.getElementById("error");
+  const container = document.querySelector(".container");
+
+  if (input === correct) {
+    document.body.style.background = "radial-gradient(circle, #1f1c2c, black)";
+    document.getElementById("secret").style.display = "block";
+    errorText.innerHTML = "";
+  } else {
+    errorText.innerHTML = "Kode salah.";
+    container.classList.add("glitch");
+    setTimeout(() => container.classList.remove("glitch"), 200);
+  }
+}
+</script>
+
+</body>
+</html>
